@@ -127,7 +127,7 @@
         <kotlin-coroutines.version>1.7.3</kotlin-coroutines.version>
 
         <!-- # for web -->
-        <spring-webmvc.version>5.3.26</spring-webmvc.version>
+        <spring-webmvc.version>5.3.41</spring-webmvc.version>
         <tomcat-embed.version>9.0.90</tomcat-embed.version>
 
         <!-- # for test -->
