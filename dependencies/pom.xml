@@ -159,6 +159,13 @@
                 <scope>import</scope>
             </dependency>
 
+            <dependency>
+                <groupId>com.fasterxml.jackson</groupId>
+                <artifactId>jackson-bom</artifactId>
+                <version>${jackson-bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <!-- spring-boot -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -184,6 +191,10 @@
                     <exclusion>
                         <groupId>org.apache.tomcat.embed</groupId>
                         <artifactId>tomcat-embed-el</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.fasterxml.jackson</groupId>
+                        <artifactId>jackson-bom</artifactId>
                     </exclusion>
                 </exclusions>
                 <type>pom</type>
