@@ -127,7 +127,8 @@
         <kotlin-coroutines.version>1.7.3</kotlin-coroutines.version>
 
         <!-- # for web -->
-        <spring-webmvc.version>5.3.41</spring-webmvc.version>
+        <spring-core.version>5.3.45</spring-core.version>
+        <spring-webmvc.version>5.3.45</spring-webmvc.version>
         <tomcat-embed.version>9.0.90</tomcat-embed.version>
 
         <!-- # for test -->
@@ -141,6 +142,13 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-bom</artifactId>
+                <version>${netty.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <!-- junit5 -->
             <dependency>
                 <groupId>org.junit</groupId>
@@ -216,11 +224,6 @@
                 <version>${tomcat-embed.version}</version>
             </dependency>
             <!-- the 3rd part -->
-            <dependency>
-                <groupId>io.netty</groupId>
-                <artifactId>netty-all</artifactId>
-                <version>${netty.version}</version>
-            </dependency>
             <dependency>
                 <groupId>org.checkerframework</groupId>
                 <artifactId>checker-qual</artifactId>
@@ -878,6 +881,11 @@
             </dependency>
 
             <!-- web -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring-core.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-webmvc</artifactId>

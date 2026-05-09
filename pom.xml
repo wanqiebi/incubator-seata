@@ -82,7 +82,10 @@
         <spring-boot-for-server.version>2.7.18</spring-boot-for-server.version>
         <spring-security.version>5.7.13</spring-security.version>
         <spring-security-crypto.version>5.7.17</spring-security-crypto.version>
-        <spring-webmvc.version>5.3.41</spring-webmvc.version>
+        <spring-core.version>5.3.45</spring-core.version>
+        <spring-webmvc.version>5.3.45</spring-webmvc.version>
+        <netty.version>4.1.128.Final</netty.version>
+        <xstream.version>1.4.21</xstream.version>
         <logback.version>1.2.13</logback.version>
     </properties>
 
@@ -138,6 +141,13 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-bom</artifactId>
+                <version>${netty.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
                 <groupId>org.apache.seata</groupId>
                 <artifactId>seata-dependencies</artifactId>
                 <version>${project.version}</version>
@@ -171,8 +181,28 @@
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring-core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
                 <artifactId>spring-webmvc</artifactId>
                 <version>${spring-webmvc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.thoughtworks.xstream</groupId>
+                <artifactId>xstream</artifactId>
+                <version>${xstream.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>*</artifactId>
+                        <groupId>org.glassfish.jersey</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>xmlpull</artifactId>
+                        <groupId>xmlpull</groupId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <!-- logback -->
             <dependency>
