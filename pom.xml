@@ -87,6 +87,8 @@
         <netty.version>4.1.128.Final</netty.version>
         <xstream.version>1.4.21</xstream.version>
         <logback.version>1.2.13</logback.version>
+        <fastjson.version>2.0.62</fastjson.version>
+        <fastjson-spring.version>2.0.62</fastjson-spring.version>
     </properties>
 
     <!--test-->
@@ -146,6 +148,21 @@
                 <version>${netty.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2-extension</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2-extension-spring5</artifactId>
+                <version>${fastjson-spring.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.seata</groupId>

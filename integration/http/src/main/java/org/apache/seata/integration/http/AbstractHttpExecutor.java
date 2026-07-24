@@ -20,11 +20,10 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONException;
-import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.parser.ParserConfig;
-import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.alibaba.fastjson2.JSON;
+import com.alibaba.fastjson2.JSONException;
+import com.alibaba.fastjson2.JSONObject;
+import com.alibaba.fastjson2.JSONWriter;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -50,11 +49,6 @@ import org.slf4j.LoggerFactory;
 public abstract class AbstractHttpExecutor implements HttpExecutor {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AbstractHttpExecutor.class);
-    private static final ParserConfig LOCAL_CONFIG = new ParserConfig();
-
-    static {
-        LOCAL_CONFIG.setSafeMode(true);
-    }
 
     @Override
     public <T, K> K executePost(String host, String path, T paramObject, Class<K> returnType) throws IOException {
@@ -94,11 +88,11 @@ public abstract class AbstractHttpExecutor implements HttpExecutor {
                 String sParam = (String)paramObject;
                 JSONObject jsonObject = null;
                 try {
-                    Object obj = JSON.parse(sParam, LOCAL_CONFIG);
+                    Object obj = JSON.parse(sParam);
                     if (obj instanceof JSONObject) {
                         jsonObject = (JSONObject)obj;
                     } else {
-                        jsonObject = (JSONObject)JSON.toJSON(obj);
+                        jsonObject = JSON.parseObject(JSON.toJSONString(obj), JSONObject.class);
                     }
                     content = jsonObject.toJSONString();
                 } catch (JSONException e) {
@@ -177,11 +171,11 @@ public abstract class AbstractHttpExecutor implements HttpExecutor {
 
     public static Map<String, String> convertParamOfBean(Object sourceParam) {
         return CollectionUtils.toStringMap(JSON.parseObject(
-            JSON.toJSONString(sourceParam, SerializerFeature.WriteNullStringAsEmpty,
-                SerializerFeature.WriteMapNullValue), Map.class, LOCAL_CONFIG));
+            JSON.toJSONString(sourceParam, JSONWriter.Feature.WriteNullStringAsEmpty,
+                    JSONWriter.Feature.WriteNulls), Map.class));
     }
 
     public static <T> Map<String, String> convertParamOfJsonString(String jsonStr, Class<T> returnType) {
-        return convertParamOfBean(JSON.parseObject(jsonStr, returnType, LOCAL_CONFIG));
+        return convertParamOfBean(JSON.parseObject(jsonStr, returnType));
     }
 }

@@ -42,7 +42,8 @@
         <bytebuddy.version>1.14.15</bytebuddy.version>
         <dubbo.alibaba.version>2.6.10</dubbo.alibaba.version>
         <sofa.rpc.version>5.6.5</sofa.rpc.version>
-        <fastjson.version>1.2.83</fastjson.version>
+        <fastjson.version>2.0.62</fastjson.version>
+        <fastjson-spring.version>2.0.62</fastjson-spring.version>
         <protostuff.version>1.5.9</protostuff.version>
         <config.version>1.2.1</config.version>
         <commons-logging.version>1.2</commons-logging.version>
@@ -250,9 +251,19 @@
                 <version>${sofa.bolt.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>fastjson</artifactId>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2</artifactId>
                 <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2-extension</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2-extension-spring5</artifactId>
+                <version>${fastjson-spring.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.antlr</groupId>

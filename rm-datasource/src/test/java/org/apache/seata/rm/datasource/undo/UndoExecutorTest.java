@@ -47,8 +47,8 @@ import java.sql.Types;
 import java.util.*;
 import java.util.concurrent.Executor;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.alibaba.fastjson2.JSON;
+import com.alibaba.fastjson2.JSONWriter;
 
 import org.apache.seata.rm.datasource.ConnectionProxy;
 import org.apache.seata.rm.datasource.DataSourceProxy;
@@ -87,7 +87,7 @@ public class UndoExecutorTest {
         f.setType(Types.VARCHAR);
         f.setKeyType(KeyType.PRIMARY_KEY);
 
-        String s = JSON.toJSONString(f, SerializerFeature.WriteDateUseDateFormat);
+        String s = JSON.toJSONString(f);
 
         System.out.println(s);
 
